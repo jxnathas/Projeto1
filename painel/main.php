@@ -39,18 +39,18 @@ if (isset($_GET['logout'])) {
             </div><!--box-usuario-->
             <div class="items-menu">
                 <h2>Cadastro</h2>
-                <a href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-depoimento">Cadastrar Depoimento</a>
-                <a href="">Cadastrar Serviço</a>
-                <a href="">Cadastrar Slides</a>
+                <a <?php selecionadoMenu('cadastrar-depoimento'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-depoimento">Cadastrar Depoimento</a>
+                <a <?php selecionadoMenu('cadastrar-servico'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-servico">Cadastrar Serviço</a>
+                <a <?php selecionadoMenu('cadastrar-slide'); ?> href="">Cadastrar Slides</a>
                 <h2>Gestão</h2>
-                <a href="">Listar Depoimentos</a>
-                <a href="">Listar Serviços</a>
-                <a href="">Listar Slides</a>
+                <a <?php selecionadoMenu('listar-depoimentos'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>listar-depoimentos">Listar Depoimentos</a>
+                <a <?php selecionadoMenu('listar-servicos'); ?> href="">Listar Serviços</a>
+                <a <?php selecionadoMenu('listar-slides'); ?> href="">Listar Slides</a>
                 <h2>Administração Painel</h2>
-                <a href="<?php echo INCLUDE_PATH_PAINEL ?>editar-usuario">Editar Usuário</a>
-                <a href="">Adicionar Usuários</a>
+                <a <?php selecionadoMenu('editar-usuario'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>editar-usuario">Editar Usuário</a>
+                <a <?php selecionadoMenu('adicionar-usuario'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>adicionar-usuario">Adicionar Usuários</a>
                 <h2>Configuração Geral</h2>
-                <a href="">Editar</a>
+                <a <?php selecionadoMenu('editar-site'); ?> <?php verificaPermissaoMenu(2); ?> href="">Editar Site</a>
             </div><!--itens-menu-->
         </div><!--menu wrapper-->
     </div><!--menu-->
@@ -60,7 +60,7 @@ if (isset($_GET['logout'])) {
                 <i class="fa fa-bars"></i>
             </div><!--menu-btn-->
             <div class="logout">
-            <a href="<?php echo INCLUDE_PATH_PAINEL ?>"><span>Pagina Inicial </span> <i class="fa fa-home"></i></a>
+            <a <?php if(@$_GET['url'] == ''){ ?> style="background: #60727a; padding: 10px 10px;" <?php } ?> href="<?php echo INCLUDE_PATH_PAINEL ?>"><span>Pagina Inicial </span> <i class="fa fa-home"></i></a>
                 <a href="<?php echo INCLUDE_PATH_PAINEL ?>?logout"><span>Sair </span> <i class="fa fa-window-close"></i></a>
             </div><!--logout-->
             <div class="clear"></div>
@@ -72,7 +72,9 @@ if (isset($_GET['logout'])) {
 
     </div><!--content-->
     <script src="<?php echo INCLUDE_PATH ?>js/jquery.js"></script>
+    <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/jquery.mask.js"></script>
     <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/main.js"></script>
+
 
 </body>
 </html>

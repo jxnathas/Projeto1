@@ -63,18 +63,17 @@
         <div class="center">
             <div id="depoimentos" class="w50 left depoimentos-container">
                 <h2 class="title">Depoimentos dos nossos clientes</h2>
+                <?php
+                    $sql = MySql::connect()->prepare("SELECT * FROM `tb_site.depoimentos` ORDER BY order_id ASC LIMIT 5");
+                    $sql->execute();
+                    $depoimentos = $sql->fetchAll();
+                    foreach($depoimentos as $key => $value){
+                ?>
                 <div class="depoimento-single">
-                    <p class="depoimento-descricao">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et viverra metus, et dictum quam. Nullam at magna et eros dapibus feugiat non id est. Cras consequat velit vel lectus congue egestas. Integer vel tempor nisl. Pellentesque pulvinar imperdiet dui, ut finibus augue facilisis congue. Quisque a nulla sed arcu feugiat vehicula. Pellentesque eros erat, tempus id viverra vel, iaculis et purus. Mauris euismod pulvinar leo id molestie. Vestibulum sagittis tempus rutrum. Sed ornare, metus rutrum tincidunt pulvinar, elit erat vehicula ante, sed dapibus purus lectus et metus. Phasellus blandit laoreet sem at vulputate. Nam eu maximus diam. Aliquam convallis dolor in sodales aliquet. Pellentesque bibendum laoreet pellentesque."</p>
-                    <p class="nome-autor">Lorem Ipsum</p>
+                    <p class="depoimento-descricao">"<?php echo $value['depoimento']; ?>"</p>
+                    <p class="nome-autor"><?php echo $value['nome']; ?> - <?php echo $value['data']; ?></p>
                 </div><!--Depoimento single-->
-                <div class="depoimento-single">
-                    <p class="depoimento-descricao">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et viverra metus, et dictum quam. Nullam at magna et eros dapibus feugiat non id est. Cras consequat velit vel lectus congue egestas. Integer vel tempor nisl. Pellentesque pulvinar imperdiet dui, ut finibus augue facilisis congue. Quisque a nulla sed arcu feugiat vehicula. Pellentesque eros erat, tempus id viverra vel, iaculis et purus. Mauris euismod pulvinar leo id molestie. Vestibulum sagittis tempus rutrum. Sed ornare, metus rutrum tincidunt pulvinar, elit erat vehicula ante, sed dapibus purus lectus et metus. Phasellus blandit laoreet sem at vulputate. Nam eu maximus diam. Aliquam convallis dolor in sodales aliquet. Pellentesque bibendum laoreet pellentesque."</p>
-                    <p class="nome-autor">Lorem Ipsum</p>
-                </div><!--Depoimento single-->
-                <div class="depoimento-single">
-                    <p class="depoimento-descricao">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et viverra metus, et dictum quam. Nullam at magna et eros dapibus feugiat non id est. Cras consequat velit vel lectus congue egestas. Integer vel tempor nisl. Pellentesque pulvinar imperdiet dui, ut finibus augue facilisis congue. Quisque a nulla sed arcu feugiat vehicula. Pellentesque eros erat, tempus id viverra vel, iaculis et purus. Mauris euismod pulvinar leo id molestie. Vestibulum sagittis tempus rutrum. Sed ornare, metus rutrum tincidunt pulvinar, elit erat vehicula ante, sed dapibus purus lectus et metus. Phasellus blandit laoreet sem at vulputate. Nam eu maximus diam. Aliquam convallis dolor in sodales aliquet. Pellentesque bibendum laoreet pellentesque."</p>
-                    <p class="nome-autor">Lorem Ipsum</p>
-                </div><!--Depoimento single-->
+                <?php } ?>
             </div>
         </div><!--center-->
 

@@ -5,8 +5,6 @@
 	font-family: "Open Sans";
 }
 
-
-
 html,body{
 	height: 100%;
 	background: rgb(225,225,225);
@@ -474,11 +472,8 @@ a.btn.order{background: #0091ea;}
 }
 
 .menu-active::before{
-	/*
-		Adicionar Seta para qd estiver selecionado.
-	*/
+	/*content: '> ';*/
 }
-
 
 
 .form-group-login label{
