@@ -175,11 +175,16 @@
             die();
         }
         /* É um metodo especifico para selecionar apenas 1 registro */
-        public static function select($tabela,$query,$arr){
-            $sql = MySql::connect()->prepare("SELECT * FROM `$tabela` WHERE $query");
-            $sql->execute($arr);
-            return $sql->fetch();
-        }
+        public static function select($table,$query = '',$arr = ''){
+			if($query != false){
+				$sql = MySql::connect()->prepare("SELECT * FROM `$table` WHERE $query");
+				$sql->execute($arr);
+			}else{
+				$sql = MySql::connect()->prepare("SELECT * FROM `$table`");
+				$sql->execute();
+			}
+			return $sql->fetch();
+		}
 
         public static function orderItem($tabela,$orderType,$idItem){
 			if($orderType == 'up'){

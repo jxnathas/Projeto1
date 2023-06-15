@@ -1,10 +1,18 @@
 <?php include('config.php'); ?>
 <?php Site::updateUsuarioOnline(); ?>
+<?php Site::contador(); ?>
+<?php
+
+    $infoSite = MySql::connect()->prepare("SELECT * FROM `tb_site.config`");
+    $infoSite->execute();
+    $infoSite = $infoSite->fetch();
+
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Projeto 1</title>
+    <title><?php echo $infoSite['titulo'] ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
     <link href="<?php echo INCLUDE_PATH; ?>styles/style.css" rel="stylesheet">
     <link href="<?php echo INCLUDE_PATH; ?>styles/fontawesome.css" rel="stylesheet">
@@ -92,7 +100,7 @@
     if ($url == 'contato') {
     ?>
     <?php } ?>
-    <script src="<?php echo INCLUDE_PATH; ?>js/exemplo.js"></script>
+    <!--<script src="<?php echo INCLUDE_PATH; ?>js/exemplo.js"></script>-->
 
 </body>
 
